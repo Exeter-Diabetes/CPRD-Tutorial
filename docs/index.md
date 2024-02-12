@@ -39,7 +39,7 @@ Welcome to the comprehensive guide on accessing CPRD (Clinical Practice Research
   + Codelist
   + Variable definitions
   
-For more information, contact the Exeter Diabetes team.
+For more information contact the Exeter Diabetes team.
 
 <!--chapter:end:index.Rmd-->
 
