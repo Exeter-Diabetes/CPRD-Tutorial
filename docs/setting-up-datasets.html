@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Setting up datasets | CPRD - Tutorial</title>
+  <meta name="description" content="3 Setting up datasets | CPRD - Tutorial" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Setting up datasets | CPRD - Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="3 Setting up datasets | CPRD - Tutorial" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Setting up datasets | CPRD - Tutorial" />
+  
+  <meta name="twitter:description" content="3 Setting up datasets | CPRD - Tutorial" />
+  
+
+<meta name="author" content="Exeter Diabetes team" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="accessing-cprd-data.html"/>
+<link rel="next" href="variables.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script language="javascript"> 
+    function toggle(id) {
+        var ele = document.getElementById("toggleText" + id);
+        var text = document.getElementById("displayText" + id);
+        var buttonText = text.innerHTML.replace("Show: ", "");
+        buttonText = buttonText.replace("Hide: ", "");
+        if(ele.style.display == "block") {
+            ele.style.display = "none";
+            text.innerHTML = "Show: " + buttonText;
+        } else {
+            ele.style.display = "block";
+            text.innerHTML = "Hide: " + buttonText;
+        }
+    } 
+</script>
+
+<script language="javascript">
+    function openCode(evt, codeName, id) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent" + id);
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks" + id);
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(codeName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<script language="javascript">
+    function hide(id){
+        document.getElementById(id).style.display = "none";
+    }
+</script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a></li>
+<li class="chapter" data-level="2" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html"><i class="fa fa-check"></i><b>2</b> Accessing CPRD data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#cprd-dataset"><i class="fa fa-check"></i><b>2.1</b> CPRD dataset</a></li>
+<li class="chapter" data-level="2.2" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#requesting-a-new-download"><i class="fa fa-check"></i><b>2.2</b> Requesting a new download</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#codelist"><i class="fa fa-check"></i><b>2.2.1</b> Codelist</a></li>
+<li class="chapter" data-level="2.2.2" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#cprd-data-storage"><i class="fa fa-check"></i><b>2.2.2</b> CPRD data storage</a></li>
+<li class="chapter" data-level="2.2.3" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#mysql-setting-up-the-data"><i class="fa fa-check"></i><b>2.2.3</b> MySQL setting up the data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html"><i class="fa fa-check"></i><b>3</b> Setting up datasets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html#creating-new-tables-in-mysql"><i class="fa fa-check"></i><b>3.1</b> Creating new tables in MySQL</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html#importing-data-into-local-rstudio-session"><i class="fa fa-check"></i><b>3.2</b> Importing data into local RStudio session</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html#other-tips"><i class="fa fa-check"></i><b>3.3</b> Other tips</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>4</b> Variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="variables.html"><a href="variables.html#codelist-1"><i class="fa fa-check"></i><b>4.1</b> Codelist</a></li>
+<li class="chapter" data-level="4.2" data-path="variables.html"><a href="variables.html#variable-definitions"><i class="fa fa-check"></i><b>4.2</b> Variable definitions</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CPRD - Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="setting-up-datasets" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Setting up datasets<a href="setting-up-datasets.html#setting-up-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This section takes advantage of the R package <code>aurum</code>. This R package can be found in the CPRD-analysis-package Github repository: <a href="https://github.com/Exeter-Diabetes/CPRD-analysis-package">https://github.com/Exeter-Diabetes/CPRD-analysis-package</a>.</p>
+<div id="creating-new-tables-in-mysql" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Creating new tables in MySQL<a href="setting-up-datasets.html#creating-new-tables-in-mysql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The vignette ’setting-up-an-analysis in the <code>aurum</code> R package has examples of most of the functions in the <code>aurum</code> package (e.g.: <code>analysis$cached</code>).</p>
+<p>Link: <a href="https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/full-dataset/vignettes/setting-up-an-analysis.Rmd">https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/full-dataset/vignettes/setting-up-an-analysis.Rmd)</a>)</p>
+<p>If you want to save (cache) tables on MySQL, you have to first choose the name of your analysis, which will be used as a prefix for all table names:</p>
+<pre><code>analysis = cprd$analysis(&quot;katie_test&quot;)</code></pre>
+<p><strong>Note</strong>: caching a table using the same table name as one which already exists will not overwrite it - it will simply create a pointer to the table which already exists. If you want to overwrite a table name you need to delete it first.</p>
+<p>When you cache a table (save it on MySQL), you can add indexes to fields of your choosing e.g.:</p>
+<pre><code>my_table &lt;- my_table %&gt;% analysis$cached(&quot;my_table&quot;, indexes=c(&quot;drugclass&quot;, &quot;dstartdate&quot;), unique_indexes=&quot;patid&quot;)</code></pre>
+<p>Having indexes will speed up future queries if you join or filter based on the indexed fields. Note that RStudio will send the query to create the cached table, and once this query is complete it will send the query to create the indexes, so if you disconnect before the indexing queries are sent then the indexes will not be created.</p>
+</div>
+<div id="importing-data-into-local-rstudio-session" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Importing data into local RStudio session<a href="setting-up-datasets.html#importing-data-into-local-rstudio-session" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><strong>You should not save individual patient-level data to your local computer or GitHub - this violates our contract with CPRD. Only summary statistics, e.g.: means or medians, should be saved.</strong></p>
+</blockquote>
+<p>You can import data from a remove MySQL table into your local RStudio.</p>
+<p>Use the collect command:</p>
+<pre><code>local_table &lt;- remote_table %&gt;% collect()</code></pre>
+<p>When importing data from MySQL into RStudio, sometimes variables are in the <code>integer64</code> format which can give errors with some R functions; these need to be converted (I use a function to convert all <code>integer64</code> fields to integers):</p>
+<pre><code>is.integer64 &lt;- function(x){class(x)==&quot;integer64&quot;}
+table &lt;- table %&gt;% mutate_if(is.integer64, as.integer)</code></pre>
+<p>Sometimes this causes <code>integer overflow</code> issues for long <code>patids</code> - if so, convert these to strings instead:</p>
+<pre><code>mutate(patid=as.character(patid))</code></pre>
+</div>
+<div id="other-tips" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Other tips<a href="setting-up-datasets.html#other-tips" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>The <a href="https://github.com/Exeter-Diabetes/CPRD-Cohort-scripts">Exeter-Diabetes/CPRD-Cohort-scripts</a> GitHub repository also has lots of example scripts.</li>
+<li>Functions that do not work in <code>dbplyr</code> (the R package that <code>aurum</code> uses to translate R into MySQL code) include:
+<ul>
+<li><code>median</code></li>
+<li><code>slice</code></li>
+<li><code>difftime</code>: use <code>datediff</code> instead</li>
+<li><code>arrange</code>: use <code>window_order</code> instead.</li>
+</ul></li>
+</ul>
+<p>You can add <code>show_query()</code> to view the MySQL query that <code>dbplyr</code> has constructed from your R code:</p>
+<pre><code>cprd$tables$observation %&gt;% inner_join(codes$creatinine_blood) %&gt;% show_query()</code></pre>
+<ul>
+<li><p>Note that if a query is in progress when you exit RStudio, it will carry on running until complete.</p></li>
+<li><p>Sometimes you need to problem-solve using MySQL directly. Deleting tables is also easier via MySQL.</p></li>
+</ul>
+<p><strong>Note</strong> Command-line MySQL:</p>
+<p>Using a terminal such as Command Prompt, MobaXTerm or Terminal, connect to the server. You can then use <code>mysql -u user -p</code> (replace <code>user</code> with your SSO username) to connect to the MySQL server (you will be prompted for your password on running this command). Run <code>exit</code> to exit.</p>
+<p>Some basic MySQL commands:</p>
+<ul>
+<li><p><code>drop table my_table;</code> will delete your table. You need to be in the correct database (e.g.: by running <code>use cprd_analysis_dev;</code>) or specify the database in the drop command (e.g.: <code>drop table cprd_analysis_dev.my_table;</code>)</p></li>
+<li><p><code>show processlist;</code> will show you all processes (queries) running under your username. If you are running queries from your local RStudio, these will carry on even if you quit RStudio. <code>show full processlist;</code> will show you the full queries running - this is easier to do in MySQL Work bench rather than terminal.</p></li>
+</ul>
+<p><strong>Note</strong> MySQL Workbench:</p>
+<p>MySQL Workbench is a GUI for MySQL programming; others are available.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="accessing-cprd-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

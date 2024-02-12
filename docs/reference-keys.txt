@@ -1,0 +1,14 @@
+intro
+accessing-cprd-data
+cprd-dataset
+requesting-a-new-download
+codelist
+cprd-data-storage
+mysql-setting-up-the-data
+setting-up-datasets
+creating-new-tables-in-mysql
+importing-data-into-local-rstudio-session
+other-tips
+variables
+codelist-1
+variable-definitions

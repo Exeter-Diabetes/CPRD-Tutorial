@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Accessing CPRD data | CPRD - Tutorial</title>
+  <meta name="description" content="2 Accessing CPRD data | CPRD - Tutorial" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Accessing CPRD data | CPRD - Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="2 Accessing CPRD data | CPRD - Tutorial" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Accessing CPRD data | CPRD - Tutorial" />
+  
+  <meta name="twitter:description" content="2 Accessing CPRD data | CPRD - Tutorial" />
+  
+
+<meta name="author" content="Exeter Diabetes team" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="setting-up-datasets.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script language="javascript"> 
+    function toggle(id) {
+        var ele = document.getElementById("toggleText" + id);
+        var text = document.getElementById("displayText" + id);
+        var buttonText = text.innerHTML.replace("Show: ", "");
+        buttonText = buttonText.replace("Hide: ", "");
+        if(ele.style.display == "block") {
+            ele.style.display = "none";
+            text.innerHTML = "Show: " + buttonText;
+        } else {
+            ele.style.display = "block";
+            text.innerHTML = "Hide: " + buttonText;
+        }
+    } 
+</script>
+
+<script language="javascript">
+    function openCode(evt, codeName, id) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent" + id);
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks" + id);
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(codeName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<script language="javascript">
+    function hide(id){
+        document.getElementById(id).style.display = "none";
+    }
+</script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a></li>
+<li class="chapter" data-level="2" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html"><i class="fa fa-check"></i><b>2</b> Accessing CPRD data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#cprd-dataset"><i class="fa fa-check"></i><b>2.1</b> CPRD dataset</a></li>
+<li class="chapter" data-level="2.2" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#requesting-a-new-download"><i class="fa fa-check"></i><b>2.2</b> Requesting a new download</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#codelist"><i class="fa fa-check"></i><b>2.2.1</b> Codelist</a></li>
+<li class="chapter" data-level="2.2.2" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#cprd-data-storage"><i class="fa fa-check"></i><b>2.2.2</b> CPRD data storage</a></li>
+<li class="chapter" data-level="2.2.3" data-path="accessing-cprd-data.html"><a href="accessing-cprd-data.html#mysql-setting-up-the-data"><i class="fa fa-check"></i><b>2.2.3</b> MySQL setting up the data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html"><i class="fa fa-check"></i><b>3</b> Setting up datasets</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html#creating-new-tables-in-mysql"><i class="fa fa-check"></i><b>3.1</b> Creating new tables in MySQL</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html#importing-data-into-local-rstudio-session"><i class="fa fa-check"></i><b>3.2</b> Importing data into local RStudio session</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up-datasets.html"><a href="setting-up-datasets.html#other-tips"><i class="fa fa-check"></i><b>3.3</b> Other tips</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>4</b> Variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="variables.html"><a href="variables.html#codelist-1"><i class="fa fa-check"></i><b>4.1</b> Codelist</a></li>
+<li class="chapter" data-level="4.2" data-path="variables.html"><a href="variables.html#variable-definitions"><i class="fa fa-check"></i><b>4.2</b> Variable definitions</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CPRD - Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="accessing-cprd-data" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Accessing CPRD data<a href="accessing-cprd-data.html#accessing-cprd-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The information below is an overview of the process taken to access the data.</p>
+<div id="cprd-dataset" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> CPRD dataset<a href="accessing-cprd-data.html#cprd-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The UK routine clinical data is available in the CPRD repository (CPRD; <a href="https://cprd.com/research-applications">https://cprd.com/research-applications</a>), but restrictions apply to the availability of these data and, therefore, are not publicly available. An application must be made directly to CPRD.</p>
+<p>All the stored CPRD tables are the exact tables provided by CPRD.</p>
+<p>If you are using CPRD in your analysis, do not forget to add the statement below to the ‘Data availability’ section:</p>
+<blockquote>
+<p>The UK routine clinical data analysed during the current study are available in the CPRD repository (CPRD; <a href="https://cprd.com/research-applications" class="uri">https://cprd.com/research-applications</a>), but restrictions apply to the availability of these data, which were used under license for the current study, and so are not publicly available. For re-using these data, an application must be made directly to CPRD.</p>
+</blockquote>
+</div>
+<div id="requesting-a-new-download" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Requesting a new download<a href="accessing-cprd-data.html#requesting-a-new-download" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The University of Exeter has several key FOB holders that can download a raw version of the CPRD data to answer your questions. Please ask a member of the “CPRD User Group” to direct you towards a key FOB holder member of staff.</p>
+<div id="codelist" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Codelist<a href="accessing-cprd-data.html#codelist" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In order to download the desired cohort, the key FOB holder requires a list of <strong>Medcodes</strong> or <strong>Prodcodes</strong> that can identify the specific patients required. Some codes already defined by the Exeter Diabetes team can be found in the GitHub repository <a href="https://github.com/Exeter-Diabetes/CPRD-Codelists/">Exeter-Diabetes/CPRD-Codelists</a>, more information about these codes will later in this tutorial.</p>
+</div>
+<div id="cprd-data-storage" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> CPRD data storage<a href="accessing-cprd-data.html#cprd-data-storage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With a list of <strong>Medcodes</strong> or <strong>Prodcodes</strong>, the key FOB holder can now download a collection of raw tables from CPRD with all of the patients which had the codes in the records. The tables will be zipped (file extension .zip) and will need be to stored in a secure server.</p>
+<blockquote>
+<p><strong>Our contract with CPRD states that individual patient-level CPRD data can only be stored in a specific folder on the server, which is an encrypted area of the server, or on MySQL on the server. You should not save individual patient-level data to your local computer, Github (whether a private or public repository), or other areas of the server as this violates our contract. Only summary statistics/aggregate data e.g. averages and counts should be saved elsewhere.</strong></p>
+</blockquote>
+<p>In the Exeter Diabetes team, the data is stored in a university server which requires you to be connected to the university network (physically or through a VPN) in order to access it.</p>
+</div>
+<div id="mysql-setting-up-the-data" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> MySQL setting up the data<a href="accessing-cprd-data.html#mysql-setting-up-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This step can be done however best fits your organisation. Below is an overview of how the Exeter Diabetes team sets up the database.</p>
+<p>The MySQL database is setup using the R package <a href="https://github.com/Exeter-Diabetes/CPRD-analysis-package/">Exeter-Diabetes/CPRD-analysis-package</a>.</p>
+<p>A tutorial on how to get started with the database can be found here:</p>
+<p><a href="https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/master/vignettes/getting-started-redacted.Rmd">https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/master/vignettes/getting-started-redacted.Rmd</a></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="setting-up-datasets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
