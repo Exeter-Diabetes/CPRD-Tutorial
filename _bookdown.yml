@@ -1,0 +1,15 @@
+rmd_files:
+    html: [
+      'index.Rmd', 
+      'Chapters/ch_access_public.Rmd', 
+      'Chapters/ch_setup_public.Rmd', 
+      'Chapters/ch_variables_public.Rmd'
+      ]
+    latex: [
+      'index.Rmd', 
+      'Chapters/ch_access_public.Rmd',
+      'Chapters/ch_setup_public.Rmd', 
+      'Chapters/ch_variables_public.Rmd', 
+      'Chapters/ch_appendix.Rmd'
+      ]
+output_dir: "docs"

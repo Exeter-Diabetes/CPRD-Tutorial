@@ -1,0 +1,53 @@
+# Variables
+
+This section provides variable definitions which the Exeter Diabetes team uses for their datasets.
+
+## Codelist
+
+The Exeter Diabetes codelists are available at [Exeter-Diabetes/CPRD-Codelists](https://github.com/Exeter-Diabetes/CPRD-Codelists).
+
+This repository includes **Medcodes** (for use with the Observation table) and **Prodcodes** (for use with the Drug Issue table), as well as **ICD10** and **OPCS4** codelists  for use with linked HES APC data. All codelists have been clinically-reviewed except a small subset where review by a non-clinician was deemed acceptable (BMI, weight, height and blood pressure readings) or where PBCL biomarker codes were used (see Codelist generation process: [https://github.com/Exeter-Diabetes/CPRD-Codelists/blob/main/readme.md#code-list-generation-process](https://github.com/Exeter-Diabetes/CPRD-Codelists/blob/main/readme.md#code-list-generation-process)).
+
+We have also included **Read** and **SNOMED** codelists created during medcode list development (see Codelist generation process); where available, these are located in each of the subfolders in the **Medcodes** folder.
+
+All codelists are based on an October 2020 extract of CPRD Aurum; later versions may include extra **Medcodes/Procodes** not included here.
+
+
+## Variable definitions
+
+The definitions and derivation algorithms for the variables used are available at [Exeter-Diabetes/CPRD-Codelists](https://github.com/Exeter-Diabetes/CPRD-Codelists). 
+
+This GitHub repository, provides a detailed view on:
+
+1. Biomarker derivation algorithms ([https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#biomarker-algorithms](https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#biomarker-algorithms))
+
+
+We have developed the R package `EHRBiomarkr` (available in the GitHub repository [Exeter-Diabetes/EHRBiomarkr](https://github.com/Exeter-Diabetes/EHRBiomarkr)), which includes various functions for cleaning and processing biomarkers in EHR, especially in CPRD Aurum. All functions can be used on local data (loaded into R) or data stored in MySQL (by using the `dbplyr` package or another package which uses `dbplyr`).
+
+Two functions for cleaning biomarkers values are included in this package:
+
+- `clean_biomarkers_values`: removes values outside of plausible limits. Run `?biomarkerAcceptableLimits` for details of how these were ascertained and further explanation of variables. More information on the variable limits can be found here: [https://github.com/Exeter-Diabetes/CPRD-Codelists/blob/main/Medcodes/Biomarkers/biomarker_acceptable_limits.txt](https://github.com/Exeter-Diabetes/CPRD-Codelists/blob/main/Medcodes/Biomarkers/biomarker_acceptable_limits.txt).
+  
+- `clean_biomarkers_units`: retains only values with appropriate unit codes (numunitid) or missing unit code in CPRD Aurum. Run `?biomarkerAcceptableUnits` for details of how these were ascertained and further explanation of variables. More information on the variable unit codes can be found here: [https://github.com/Exeter-Diabetes/CPRD-Codelists/blob/main/Medcodes/Biomarkers/biomarker_acceptable_units.txt](https://github.com/Exeter-Diabetes/CPRD-Codelists/blob/main/Medcodes/Biomarkers/biomarker_acceptable_units.txt).
+
+
+These functions can be applied to a large range of biomarkers. See this for more information: [https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#biomarker-cleaning-functions](https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#biomarker-cleaning-functions)
+
+The R package also includes functions for calculating more complex variables such as:
+
+- eGFR from creatinine, age and sex: [https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#egfr-from-creatinine-age-and-sex-using-ckd-epi-creatinine-equation-2021](https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#egfr-from-creatinine-age-and-sex-using-ckd-epi-creatinine-equation-2021)
+
+- cardiovascular risk score functions: [https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#cardiovascular-risk-score-functions](https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#cardiovascular-risk-score-functions)
+
+- kidney risk score functions: [https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#kidney-risk-score-functions](https://github.com/Exeter-Diabetes/EHRBiomarkr?tab=readme-ov-file#kidney-risk-score-functions)
+
+
+
+2. Comorbidity derivation algorithms ([https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#comorbidity-algorithms](https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#comorbidity-algorithms))
+
+
+3. Diabetes derivation algorithms ([https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#diabetes-algorithms](https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#diabetes-algorithms))
+
+
+4. Sociodemographics derivation algorithms ([https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#sociodemographics-algorithms](https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#sociodemographics-algorithms))
+

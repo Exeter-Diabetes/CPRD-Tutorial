@@ -1,0 +1,42 @@
+--- 
+title: "CPRD - Tutorial"
+author: "Exeter Diabetes team"
+site: bookdown::bookdown_site
+output:
+    bookdown::pdf_book:
+        includes:
+            in_header: header.tex
+    bookdown::gitbook:
+        config:
+            sharing: null
+        css: 'style.css'
+        includes:
+            in_header: _toggle.html
+        keep_md: TRUE
+linkcolor: blue
+documentclass: book
+link-citations: yes
+description: "CPRD - Tutorial"
+---
+
+# Intro
+
+```{r, child = "_setup.Rmd", include = FALSE, purl = FALSE, cache = FALSE}
+```
+
+Welcome to the comprehensive guide on accessing CPRD (Clinical Practice Research Datalink) data. This document is designed to assist researchers and analysts in navigating the intricacies of CPRD, offering step-by-step instructions on:
+
+- Accessing the data
+  + CPRD data
+  + How to request a new download
+  
+- Setting up datasets
+  + Creating new tables in MySQL
+  + Importing data into local RStudio session
+  + Other tips
+
+- Variables
+  + Codelist
+  + Variable definitions
+  
+For more information, contact the Exeter Diabetes team.

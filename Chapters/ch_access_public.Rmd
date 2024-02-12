@@ -1,0 +1,48 @@
+# Accessing CPRD data
+
+The information below is an overview of the process taken to access the data.
+
+## CPRD dataset
+
+The UK routine clinical data is available in the CPRD repository (CPRD; [https://cprd.com/research-applications](https://cprd.com/research-applications)), but restrictions apply to the availability of these data and, therefore, are not publicly available. An application must be made directly to CPRD.
+
+All the stored CPRD tables are the exact tables provided by CPRD.
+
+If you are using CPRD in your analysis, do not forget to add the statement below to the 'Data availability' section:
+
+
+> The UK routine clinical data analysed during the current study are available in the CPRD repository (CPRD; https://cprd.com/research-applications), but restrictions apply to the availability of these data, which were used under license for the current study, and so are not publicly available. For re-using these data, an application must be made directly to CPRD.
+
+
+## Requesting a new download
+
+The University of Exeter has several key FOB holders that can download a raw version of the CPRD data to answer your questions. Please ask a member of the "CPRD User Group" to direct you towards a key FOB holder member of staff.
+
+### Codelist
+
+In order to download the desired cohort, the key FOB holder requires a list of **Medcodes** or **Prodcodes** that can identify the specific patients required. Some codes already defined by the Exeter Diabetes team can be found in the GitHub repository [Exeter-Diabetes/CPRD-Codelists](https://github.com/Exeter-Diabetes/CPRD-Codelists/), more information about these codes will later in this tutorial. 
+
+
+### CPRD data storage
+
+With a list of **Medcodes** or **Prodcodes**, the key FOB holder can now download a collection of raw tables from CPRD with all of the patients which had the codes in the records. The tables will be zipped (file extension .zip) and will need be to stored in a secure server.
+
+> **Our contract with CPRD states that individual patient-level CPRD data can only be stored in a specific folder on the server, which is an encrypted area of the server, or on MySQL on the server. You should not save individual patient-level data to your local computer, Github (whether a private or public repository), or other areas of the server as this violates our contract. Only summary statistics/aggregate data e.g. averages and counts should be saved elsewhere.**
+
+In the Exeter Diabetes team, the data is stored in a university server which requires you to be connected to the university network (physically or through a VPN) in order to access it.  
+
+
+### MySQL setting up the data
+
+This step can be done however best fits your organisation. Below is an overview of how the Exeter Diabetes team sets up the database.
+
+
+The MySQL database is setup using the R package [Exeter-Diabetes/CPRD-analysis-package](https://github.com/Exeter-Diabetes/CPRD-analysis-package/).
+
+A tutorial on how to get started with the database can be found here:
+
+[https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/master/vignettes/getting-started-redacted.Rmd](https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/master/vignettes/getting-started-redacted.Rmd)
+
+
+
+

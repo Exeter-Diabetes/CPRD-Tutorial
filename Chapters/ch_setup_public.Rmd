@@ -1,0 +1,91 @@
+# Setting up datasets 
+
+This section takes advantage of the R package `aurum`. This R package can be found in the CPRD-analysis-package Github repository: [https://github.com/Exeter-Diabetes/CPRD-analysis-package](https://github.com/Exeter-Diabetes/CPRD-analysis-package). 
+
+
+## Creating new tables in MySQL
+
+The vignette 'setting-up-an-analysis in the `aurum` R package has examples of most of the functions in the `aurum` package (e.g.: `analysis$cached`).
+
+Link: [https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/full-dataset/vignettes/setting-up-an-analysis.Rmd)](https://github.com/Exeter-Diabetes/CPRD-analysis-package/blob/full-dataset/vignettes/setting-up-an-analysis.Rmd))
+
+If you want to save (cache) tables on MySQL, you have to first choose the name of your analysis, which will be used as a prefix for all table names:
+
+````
+analysis = cprd$analysis("katie_test")
+````
+
+**Note**: caching a table using the same table name as one which already exists will not overwrite it - it will simply create a pointer to the table which already exists. If you want to overwrite a table name you need to delete it first.
+
+When you cache a table (save it on MySQL), you can add indexes to fields of your choosing e.g.:
+
+````
+my_table <- my_table %>% analysis$cached("my_table", indexes=c("drugclass", "dstartdate"), unique_indexes="patid")
+````
+
+Having indexes will speed up future queries if you join or filter based on the indexed fields. Note that RStudio will send the query to create the cached table, and once this query is complete it will send the query to create the indexes, so if you disconnect before the indexing queries are sent then the indexes will not be created.
+
+
+## Importing data into local RStudio session
+
+> **You should not save individual patient-level data to your local computer or GitHub - this violates our contract with CPRD. Only summary statistics, e.g.: means or medians, should be saved.**
+
+You can import data from a remove MySQL table into your local RStudio.
+
+Use the collect command:
+
+````
+local_table <- remote_table %>% collect()
+````
+
+When importing data from MySQL into RStudio, sometimes variables are in the `integer64` format which can give errors with some R functions; these need to be converted (I use a function to convert all `integer64` fields to integers):
+
+````
+is.integer64 <- function(x){class(x)=="integer64"}
+table <- table %>% mutate_if(is.integer64, as.integer)
+````
+
+Sometimes this causes `integer overflow` issues for long `patids` - if so, convert these to strings instead:
+
+````
+mutate(patid=as.character(patid))
+````
+
+## Other tips
+
+- The [Exeter-Diabetes/CPRD-Cohort-scripts](https://github.com/Exeter-Diabetes/CPRD-Cohort-scripts) GitHub repository  also has lots of example scripts.
+- Functions that do not work in `dbplyr` (the R package that `aurum` uses to translate R into MySQL code) include:
+  + `median`
+  + `slice`
+  + `difftime`: use `datediff` instead
+  + `arrange`: use `window_order` instead.
+
+You can add `show_query()` to view the MySQL query that `dbplyr` has constructed from your R code:
+
+````
+cprd$tables$observation %>% inner_join(codes$creatinine_blood) %>% show_query()
+````
+
+- Note that if a query is in progress when you exit RStudio, it will carry on running until complete.
+
+- Sometimes you need to problem-solve using MySQL directly. Deleting tables is also easier via MySQL.
+
+
+
+**Note** Command-line MySQL:
+
+Using a terminal such as Command Prompt, MobaXTerm or Terminal, connect to the server. You can then use `mysql -u user -p` (replace `user` with your SSO username) to connect to the MySQL server (you will be prompted for your password on running this command). Run `exit` to exit.
+
+Some basic MySQL commands:
+
+  + `drop table my_table;` will delete your table. You need to be in the correct database (e.g.: by running `use cprd_analysis_dev;`) or specify the database in the drop command (e.g.: `drop table cprd_analysis_dev.my_table;`)
+
+  + `show processlist;` will show you all processes (queries) running under your username. If you are running queries from your local RStudio, these will carry on even if you quit RStudio. `show full processlist;` will show you the full queries running - this is easier to do in MySQL Work bench rather than terminal.
+
+
+**Note** MySQL Workbench:
+
+MySQL Workbench is a GUI for MySQL programming; others are available. 
+
+
+
