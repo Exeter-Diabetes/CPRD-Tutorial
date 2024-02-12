@@ -51,3 +51,4 @@ The R package also includes functions for calculating more complex variables suc
 
 4. Sociodemographics derivation algorithms ([https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#sociodemographics-algorithms](https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#sociodemographics-algorithms))
 
+

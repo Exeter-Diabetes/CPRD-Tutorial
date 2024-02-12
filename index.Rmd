@@ -29,7 +29,7 @@ Welcome to the comprehensive guide on accessing CPRD (Clinical Practice Research
 - Accessing the data
   + CPRD data
   + How to request a new download
-  
+
 - Setting up datasets
   + Creating new tables in MySQL
   + Importing data into local RStudio session
@@ -38,5 +38,5 @@ Welcome to the comprehensive guide on accessing CPRD (Clinical Practice Research
 - Variables
   + Codelist
   + Variable definitions
-  
+
 For more information contact the Exeter Diabetes team.
