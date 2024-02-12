@@ -162,7 +162,9 @@
 <pre><code>analysis = cprd$analysis(&quot;katie_test&quot;)</code></pre>
 <p><strong>Note</strong>: caching a table using the same table name as one which already exists will not overwrite it - it will simply create a pointer to the table which already exists. If you want to overwrite a table name you need to delete it first.</p>
 <p>When you cache a table (save it on MySQL), you can add indexes to fields of your choosing e.g.:</p>
-<pre><code>my_table &lt;- my_table %&gt;% analysis$cached(&quot;my_table&quot;, indexes=c(&quot;drugclass&quot;, &quot;dstartdate&quot;), unique_indexes=&quot;patid&quot;)</code></pre>
+<pre><code>my_table &lt;- my_table %&gt;% analysis$cached(&quot;my_table&quot;, 
+                                         indexes=c(&quot;drugclass&quot;, &quot;dstartdate&quot;),
+                                         unique_indexes=&quot;patid&quot;)</code></pre>
 <p>Having indexes will speed up future queries if you join or filter based on the indexed fields. Note that RStudio will send the query to create the cached table, and once this query is complete it will send the query to create the indexes, so if you disconnect before the indexing queries are sent then the indexes will not be created.</p>
 </div>
 <div id="importing-data-into-local-rstudio-session" class="section level2 hasAnchor" number="3.2">
@@ -247,7 +249,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "search": {
 "engine": "fuse",
 "options": null

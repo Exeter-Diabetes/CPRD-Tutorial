@@ -29,7 +29,7 @@ Welcome to the comprehensive guide on accessing CPRD (Clinical Practice Research
 - Accessing the data
   + CPRD data
   + How to request a new download
-  
+
 - Setting up datasets
   + Creating new tables in MySQL
   + Importing data into local RStudio session
@@ -38,7 +38,7 @@ Welcome to the comprehensive guide on accessing CPRD (Clinical Practice Research
 - Variables
   + Codelist
   + Variable definitions
-  
+
 For more information contact the Exeter Diabetes team.
 
 <!--chapter:end:index.Rmd-->
@@ -116,7 +116,9 @@ analysis = cprd$analysis("katie_test")
 When you cache a table (save it on MySQL), you can add indexes to fields of your choosing e.g.:
 
 ````
-my_table <- my_table %>% analysis$cached("my_table", indexes=c("drugclass", "dstartdate"), unique_indexes="patid")
+my_table <- my_table %>% analysis$cached("my_table", 
+                                         indexes=c("drugclass", "dstartdate"),
+                                         unique_indexes="patid")
 ````
 
 Having indexes will speed up future queries if you join or filter based on the indexed fields. Note that RStudio will send the query to create the cached table, and once this query is complete it will send the query to create the indexes, so if you disconnect before the indexing queries are sent then the indexes will not be created.
@@ -240,6 +242,7 @@ The R package also includes functions for calculating more complex variables suc
 
 
 4. Sociodemographics derivation algorithms ([https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#sociodemographics-algorithms](https://github.com/Exeter-Diabetes/CPRD-Codelists/tree/main?tab=readme-ov-file#sociodemographics-algorithms))
+
 
 
 <!--chapter:end:Chapters/ch_variables_public.Rmd-->
